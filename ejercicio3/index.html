@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 3 - Pagina 1</title>
+  <meta name="description" content="Pruebas con LocalStorage">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <fieldset>
+    <legend>Filter</legend>
+    <p>
+      <input type="text" name="filter" id="filter" placeholder="..." onkeyup="filterTasks()">
+    </p>
+  </fieldset>
+  <fieldset>
+    <legend>New Task</legend>
+    <p>
+      <input type="text" name="task" id="task" placeholder="..." autofocus>
+      <input type="submit" value="Create" onclick="createTask()">
+    </p>
+  </fieldset>
+  <fieldset>
+    <legend>
+      <label for="tasks">Tasks</label>
+      <input type="submit" value="Clear" onclick="clearTask()">
+    </legend>
+    <ul id="tasks"></ul>
+  </fieldset>
+  <script>
+    const task = document.getElementById('task');
+    const tasks = document.getElementById('tasks');
+    const filter = document.getElementById('filter');
+
+    function createTask() {
+      let li = document.createElement('li');
+      li.textContent = task.value;
+      tasks.append(li);
+      task.value = '';
+      saveTasks();
+    }
+
+    function saveTasks() {
+      let lis = tasks.querySelectorAll('li');
+      let tasksText = [...lis].map(task => task.textContent); // array with text of lis
+      localStorage['tasks'] = JSON.stringify(tasksText);
+    }
+
+    function loadTasks() {
+      if (localStorage['tasks']) {
+        let tasksText = JSON.parse(localStorage['tasks']);
+        tasksText.forEach(task => {
+          let li = document.createElement('li');
+          li.textContent = task;
+          tasks.append(li);
+        });
+      }
+    }
+
+    function clearTask() {
+      localStorage.removeItem('tasks');
+      tasks.innerHTML = '';
+    }
+
+    function filterTasks() {
+      let lis = tasks.querySelectorAll('li');
+      lis.forEach(li => {
+        if (li.textContent.includes(filter.value)) {
+          li.classList.remove('hidden');
+        } else {
+          li.classList.add('hidden');
+        }
+      });
+    }
+
+    // Execute
+    window.onload = loadTasks();
+  </script>
+</body>
+</html>

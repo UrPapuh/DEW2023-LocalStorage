@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 2 - Pagina 1</title>
+  <meta name="description" content="Pruebas con LocalStorage">
+</head>
+<body>
+  <fieldset>
+    <legend>Settings</legend>
+    <p>
+      <label for="color">Color: </label>
+      <input type="color" name="color" id="color" onchange="change()">
+    </p>
+    <p>
+      <label for="size">Size: </label>
+      <input type="range" name="size" id="size" min="8" max="30" onchange="change()">
+    </p>
+    <p>
+      <input type="submit" value="Save" onclick="save()">
+    </p>
+  </fieldset>
+  <p id="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, sed facere explicabo quos fugit inventore possimus repellendus cum non omnis tempora blanditiis est ex unde nesciunt natus saepe maxime at.</p>
+  <script>
+    const color = document.getElementById('color');
+    const size = document.getElementById('size');
+    const text = document.getElementById('text');
+
+    function change() {
+      text.style.color = color.value;
+      text.style.fontSize = `${size.value}px`;
+    }
+
+    function save() {
+      localStorage.setItem('color', color.value);
+      localStorage.setItem('size', size.value);
+    }
+
+    window.onload = () => {
+      if (localStorage['color'] && localStorage['size']) {
+        color.value = localStorage['color'];
+        size.value = localStorage['size'];
+      }
+      change();
+    };
+  </script>
+</body>
+</html>

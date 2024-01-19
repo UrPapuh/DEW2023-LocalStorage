@@ -1,0 +1,19 @@
+{
+  "name": "dew2023-localstorage",
+  "version": "1.0.0",
+  "description": "Practica del LocalStorage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UrPapuh/DEW2023-LocalStorage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UrPapuh/DEW2023-LocalStorage/issues"
+  },
+  "homepage": "https://github.com/UrPapuh/DEW2023-LocalStorage#readme"
+}

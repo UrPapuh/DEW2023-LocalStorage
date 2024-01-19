@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1 - Pagina 2</title>
+  <meta name="description" content="Pruebas con LocalStorage">
+</head>
+<body>
+  <fieldset>
+    <legend>Data View</legend>
+    <p>Name: <span id="inputName"></span></p>
+    <p>Age: <span id="inputAge"></span></p>
+    <p>
+      <button onclick="clear()">Clear</button>
+    </p>
+  </fieldset>
+  <script>
+    const inputName = document.getElementById('inputName');
+    const inputAge = document.getElementById('inputAge');
+
+    function read() {
+      inputName.textContent = localStorage.getItem('name') ?? 'Anonimo';
+      inputAge.textContent = localStorage.getItem('age') ?? 'Sin edad';
+    }
+
+    function clear() {
+      console.log(1);
+      localStorage.clear();
+    }
+
+    // Execute
+    read();
+  </script>
+</body>
+</html>

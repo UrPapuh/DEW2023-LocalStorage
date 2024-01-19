@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1 - Pagina 1</title>
+  <meta name="description" content="Pruebas con LocalStorage">
+</head>
+<body>
+  <fieldset>
+    <legend>Data</legend>
+    <p>
+      <label for="inputName">Name: </label>
+      <input type="text" name="inputName" id="inputName">
+    </p>
+    <p>
+      <label for="inputAge">Age: </label>
+      <input type="number" name="inputAge" id="inputAge">
+    </p>
+    <p>
+      <button onclick="save()">Save</button>
+    </p>
+  </fieldset>
+  <p>
+    <a href="info.html">View data</a>
+  </p>
+  <script>
+    const inputName = document.getElementById('inputName');
+    const inputAge = document.getElementById('inputAge');
+
+    function save() {
+      localStorage.setItem('name', inputName.value);
+      localStorage.setItem('age', inputAge.value);
+    }
+  </script>
+</body>
+</html>
